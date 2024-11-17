@@ -1,88 +1,89 @@
-#!/bin/bash
+Lanzada por el usuario RodrigoZapanaflores
 
-# Verificar la ubicación actual
-pwd
+Running as SYSTEM
+Ejecutando. en el espacio de trabajo /home/rzf/.jenkins/jobs/construirydesplegar/workspace
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/rzf/.jenkins/jobs/construirydesplegar/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git # timeout=10
+Fetching upstream changes from https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.45.2'
+ > git fetch --tags --force --progress -- https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/RodZap^{commit} # timeout=10
+Checking out Revision 6da879b950b84a33d9bb9fff690d8de800229fef (refs/remotes/origin/RodZap)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6da879b950b84a33d9bb9fff690d8de800229fef # timeout=10
+Commit message: "files.sh"
+ > git rev-list --no-walk 6da879b950b84a33d9bb9fff690d8de800229fef # timeout=10
+[workspace] $ /bin/bash /home/rzf/Descargas/apache-tomcat-10.1.33/temp/jenkins3691262137569330237.sh
+/home/rzf/.jenkins/jobs/construirydesplegar/workspace
+Clonando el repositorio...
+fatal: la ruta de destino 'TRabajoEntornos1' ya existe y no es un directorio vacío.
+Cambiando a la rama RodZap...
+Ya en 'RodZap'
+Tu rama está adelantada a 'origin/RodZap' por 1 commit.
+  (usa "git push" para publicar tus commits locales)
+Haciendo pull de los últimos cambios en RodZap...
+Desde https://github.com/RodrigoZapanaFlores/TRabajoEntornos1
+ * branch            RodZap     -> FETCH_HEAD
+Ya está actualizado.
+Archivos en el directorio TRabajoEntornos1:
+build.sh
+cabecera.sh
+inicio.html
+inicio.sh
+navegacion.sh
+pagina1.html
+pagina1.sh
+pagina2.html
+pagina2.sh
+pagina3.html
+pagina3.sh
+pie.sh
+README.md
+web
+Asignando permisos de ejecución a los scripts...
+Ejecutando build.sh...
+se borra la web y se vuelve a crear
+finalizado
+El archivo no existe
+--2024-11-17 03:40:09--  https://www.w3schools.com/w3css/4/w3.css
+Resolviendo www.w3schools.com (www.w3schools.com)... 192.229.133.221
+Conectando con www.w3schools.com (www.w3schools.com)[192.229.133.221]:443... conectado.
+Petición HTTP enviada, esperando respuesta... 200 OK
+Longitud: 23427 (23K) [text/css]
+Guardando como: ‘w3.css’
 
-# Clonar el repositorio
-echo "Clonando el repositorio..."
-git clone https://RodrigoZapanaFlores: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@github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
+     0K .......... .......... ..                              100% 22,9K=1,0s
 
-# Cambiar al directorio del repositorio clonado
-cd TRabajoEntornos1
+2024-11-17 03:40:12 (22,9 KB/s) - ‘w3.css’ guardado [23427/23427]
 
-# Cambiar a la rama RodZap
-echo "Cambiando a la rama RodZap..."
-git checkout RodZap
+Archivos HTML generados correctamente.
+Copiando archivos HTML a la raíz del repositorio...
+Archivos HTML copiados correctamente a la raíz del repositorio.
+Configurando el usuario de Git...
+Limpiando el árbol de trabajo...
+Directorio de trabajo y estado de índice WIP on RodZap: 6fc55d8 Desplegar sitio web en main guardados
+Descartado refs/stash@{0} (ef7ad44a4c0db8d9da6d7880a2e1e6bca9ca81a9)
+Cambiando a la rama main...
+Cambiado a rama 'main'
+Tu rama está adelantada a 'origin/main' por 1 commit.
+  (usa "git push" para publicar tus commits locales)
+Haciendo pull de los últimos cambios en main...
+Desde https://github.com/RodrigoZapanaFlores/TRabajoEntornos1
+ * branch            main       -> FETCH_HEAD
+La rama actual main está actualizada.
+Agregando los archivos al repositorio...
+Realizando el commit de los cambios...
+En la rama main
+Tu rama está adelantada a 'origin/main' por 1 commit.
+  (usa "git push" para publicar tus commits locales)
 
-# Hacer pull de los últimos cambios en la rama RodZap
-echo "Haciendo pull de los últimos cambios en RodZap..."
-git pull origin RodZap
-
-# Listar los archivos en el directorio
-echo "Archivos en el directorio TRabajoEntornos1:"
-ls
-
-# Asignar permisos de ejecución a todos los scripts necesarios
-echo "Asignando permisos de ejecución a los scripts..."
-chmod +x build.sh inicio.sh pagina1.sh pagina2.sh pagina3.sh cabecera.sh navegacion.sh pie.sh
-
-# Ejecutar el script build.sh
-echo "Ejecutando build.sh..."
-./build.sh
-
-# Verificar si los archivos HTML han sido generados correctamente
-if [[ -e web/inicio.html && -e web/pagina1.html && -e web/pagina2.html && -e web/pagina3.html ]]; then
-    echo "Archivos HTML generados correctamente."
-else
-    echo "Error: Uno o más archivos HTML no existen."
-    exit 1
-fi
-
-# Copiar los archivos HTML generados desde la carpeta web a la raíz del repositorio
-echo "Copiando archivos HTML a la raíz del repositorio..."
-cp web/inicio.html .
-cp web/pagina1.html .
-cp web/pagina2.html .
-cp web/pagina3.html .
-
-# Verificar que los archivos han sido copiados correctamente
-if [[ -e inicio.html && -e pagina1.html && -e pagina2.html && -e pagina3.html ]]; then
-    echo "Archivos HTML copiados correctamente a la raíz del repositorio."
-else
-    echo "Error: La copia de archivos HTML ha fallado."
-    exit 1
-fi
-
-# Configurar el usuario de Git
-echo "Configurando el usuario de Git..."
-git config --global user.email "Rodrigozapanaflores@gmail.com"
-git config --global user.name "RodrigoZapanaFlores"
-
-# Limpiar el árbol de trabajo
-echo "Limpiando el árbol de trabajo..."
-git stash save --keep-index
-git stash drop
-
-# Cambiar a la rama main
-echo "Cambiando a la rama main..."
-git checkout main
-
-# Hacer pull de los últimos cambios en la rama main
-echo "Haciendo pull de los últimos cambios en main..."
-git pull --rebase origin main
-
-# Agregar los archivos al repositorio
-echo "Agregando los archivos al repositorio..."
-git add inicio.html pagina1.html pagina2.html pagina3.html
-
-# Realizar el commit de los cambios
-echo "Realizando el commit de los cambios..."
-git commit -a -m "Desplegar sitio web en main"
-
-# Subir los cambios a GitHub
-echo "Subiendo los cambios a GitHub..."
-git push -u https://RodrigoZapanaFlores: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@github.com/RodrigoZapanaFlores/TRabajoEntornos1.git main
-
-# Finalización correcta del script
-echo "Script completado correctamente."
-exit 0
+nada para hacer commit, el árbol de trabajo está limpio
+Subiendo los cambios a GitHub...
+remote: Invalid username or password.
+fatal: Autenticación falló para 'https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git/'
+Script completado correctamente.
+Finished: SUCCESS
