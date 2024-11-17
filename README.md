@@ -1,84 +1,74 @@
-#!/bin/bash
+Lanzada por el usuario RodrigoZapanaflores
+Running as SYSTEM
+Ejecutando. en el espacio de trabajo /home/rzf/.jenkins/jobs/construirydesplegar/workspace
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/rzf/.jenkins/jobs/construirydesplegar/workspace/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git # timeout=10
+Fetching upstream changes from https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.45.2'
+ > git fetch --tags --force --progress -- https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/RodZap^{commit} # timeout=10
+Checking out Revision 6da879b950b84a33d9bb9fff690d8de800229fef (refs/remotes/origin/RodZap)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6da879b950b84a33d9bb9fff690d8de800229fef # timeout=10
+Commit message: "files.sh"
+ > git rev-list --no-walk 6da879b950b84a33d9bb9fff690d8de800229fef # timeout=10
+[workspace] $ /bin/bash /home/rzf/Descargas/apache-tomcat-10.1.33/temp/jenkins16546172462639563532.sh
+/home/rzf/.jenkins/jobs/construirydesplegar/workspace
+Clonando el repositorio...
+fatal: la ruta de destino 'TRabajoEntornos1' ya existe y no es un directorio vacío.
+Cambiando a la rama RodZap...
+Ya en 'RodZap'
+M	build.sh
+M	cabecera.sh
+M	inicio.sh
+M	navegacion.sh
+M	pagina1.sh
+M	pagina2.sh
+M	pagina3.sh
+M	pie.sh
+Tu rama está actualizada con 'origin/RodZap'.
+Haciendo pull de los últimos cambios en RodZap...
+Desde https://github.com/RodrigoZapanaFlores/TRabajoEntornos1
+ * branch            RodZap     -> FETCH_HEAD
+Ya está actualizado.
+Archivos en el directorio TRabajoEntornos1:
+build.sh
+cabecera.sh
+inicio.html
+inicio.sh
+navegacion.sh
+pagina1.html
+pagina1.sh
+pagina2.html
+pagina2.sh
+pagina3.sh
+pie.sh
+README.md
+web
+Asignando permisos de ejecución a los scripts...
+Ejecutando build.sh...
+se borra la web y se vuelve a crear
+finalizado
+El archivo no existe
+--2024-11-17 03:18:52--  https://www.w3schools.com/w3css/4/w3.css
+Resolviendo www.w3schools.com (www.w3schools.com)... 192.229.133.221
+Conectando con www.w3schools.com (www.w3schools.com)[192.229.133.221]:443... conectado.
+Petición HTTP enviada, esperando respuesta... 200 OK
+Longitud: 23427 (23K) [text/css]
+Guardando como: ‘w3.css’
 
-# Verificar la ubicación actual
-pwd
+     0K .......... .......... ..                              100% 22,8K=1,0s
 
-# Clonar el repositorio
-echo "Clonando el repositorio..."
-git clone https://RodrigoZapanaFlores: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@github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
+2024-11-17 03:18:55 (22,8 KB/s) - ‘w3.css’ guardado [23427/23427]
 
-# Cambiar al directorio del repositorio clonado
-cd TRabajoEntornos1
-
-# Cambiar a la rama RodZap
-echo "Cambiando a la rama RodZap..."
-git checkout RodZap
-
-# Hacer pull de los últimos cambios en la rama RodZap
-echo "Haciendo pull de los últimos cambios en RodZap..."
-git pull origin RodZap
-
-# Listar los archivos en el directorio
-echo "Archivos en el directorio TRabajoEntornos1:"
-ls
-
-# Asignar permisos de ejecución a todos los scripts necesarios
-echo "Asignando permisos de ejecución a los scripts..."
-chmod +x build.sh inicio.sh pagina1.sh pagina2.sh pagina3.sh cabecera.sh navegacion.sh pie.sh
-
-# Ejecutar el script build.sh
-echo "Ejecutando build.sh..."
-./build.sh
-
-# Verificar si los archivos HTML han sido generados correctamente
-if [[ -e web/inicio.html && -e web/pagina1.html && -e web/pagina2.html && -e web/pagina3.html ]]; then
-    echo "Archivos HTML generados correctamente."
-else
-    echo "Error: Uno o más archivos HTML no existen."
-    exit 1
-fi
-
-# Copiar los archivos HTML generados desde la carpeta web
-echo "Copiando archivos HTML a la raíz del repositorio..."
-cp web/inicio.html .
-cp web/pagina1.html .
-cp web/pagina2.html .
-cp web/pagina3.html
-
-# Verificar que los archivos han sido copiados correctamente
-if [[ -e inicio.html && -e pagina1.html && -e pagina2.html && -e pagina3.html ]]; then
-    echo "Archivos HTML copiados correctamente a la raíz del repositorio."
-else
-    echo "Error: La copia de archivos HTML ha fallado."
-    exit 1
-fi
-
-# Configurar el usuario de Git
-echo "Configurando el usuario de Git..."
-git config --global user.email "Rodrigozapanaflores@gmail.com"
-git config --global user.name "RodrigoZapanaFlores"
-
-# Cambiar a la rama main
-echo "Cambiando a la rama main..."
-git stash
-git checkout main
-
-# Hacer pull de los últimos cambios en la rama main
-echo "Haciendo pull de los últimos cambios en main..."
-git pull origin main
-
-# Agregar los archivos al repositorio
-echo "Agregando los archivos al repositorio..."
-git add inicio.html pagina1.html pagina2.html pagina3.html
-
-# Realizar el commit de los cambios
-echo "Realizando el commit de los cambios..."
-git commit -a -m "Desplegar sitio web en main"
-
-# Subir los cambios a GitHub
-echo "Subiendo los cambios a GitHub..."
-git push -u https://RodrigoZapanaFlores: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@github.com/RodrigoZapanaFlores/TRabajoEntornos1.git main
-
-# Finalización correcta del script
-echo "Script completado correctamente."
-exit 0
+Archivos HTML generados correctamente.
+Copiando archivos HTML a la raíz del repositorio...
+cp: falta el operando archivo de destino después de 'web/pagina3.html'
+Pruebe 'cp --help' para más información.
+Error: La copia de archivos HTML ha fallado.
+Build step 'Ejecutar linea de comandos (shell)' marked build as failure
+Finished: FAILURE
