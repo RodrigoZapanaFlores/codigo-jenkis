@@ -1,88 +1,24 @@
-#!/bin/bash
+Lanzada por el usuario RodrigoZapanaflores
 
-# Verificar la ubicación actual
-pwd
-
-# Clonar el repositorio
-echo "Clonando el repositorio..."
-git clone https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
-
-# Cambiar al directorio del repositorio clonado
-cd TRabajoEntornos1
-
-# Cambiar a la rama RodZap
-echo "Cambiando a la rama RodZap..."
-git checkout RodZap
-
-# Hacer pull de los últimos cambios en la rama RodZap
-echo "Haciendo pull de los últimos cambios en RodZap..."
-git pull origin RodZap
-
-# Listar los archivos en el directorio
-echo "Archivos en el directorio TRabajoEntornos1:"
-ls
-
-# Asignar permisos de ejecución a todos los scripts necesarios
-echo "Asignando permisos de ejecución a los scripts..."
-chmod +x build.sh inicio.sh pagina1.sh pagina2.sh pagina3.sh cabecera.sh navegacion.sh pie.sh
-
-# Ejecutar el script build.sh
-echo "Ejecutando build.sh..."
-./build.sh
-
-# Verificar si los archivos HTML han sido generados correctamente
-if [[ -e web/inicio.html && -e web/pagina1.html && -e web/pagina2.html && -e web/pagina3.html ]]; then
-    echo "Archivos HTML generados correctamente."
-else
-    echo "Error: Uno o más archivos HTML no existen."
-    exit 1
-fi
-
-# Copiar los archivos HTML generados desde la carpeta web a la raíz del repositorio
-echo "Copiando archivos HTML a la raíz del repositorio..."
-cp web/inicio.html .
-cp web/pagina1.html .
-cp web/pagina2.html .
-cp web/pagina3.html .
-
-# Verificar que los archivos han sido copiados correctamente
-if [[ -e inicio.html && -e pagina1.html && -e pagina2.html && -e pagina3.html ]]; then
-    echo "Archivos HTML copiados correctamente a la raíz del repositorio."
-else
-    echo "Error: La copia de archivos HTML ha fallado."
-    exit 1
-fi
-
-# Configurar el usuario de Git
-echo "Configurando el usuario de Git..."
-git config --global user.email "Rodrigozapanaflores@gmail.com"
-git config --global user.name "RodrigoZapanaFlores"
-
-# Limpiar el árbol de trabajo
-echo "Limpiando el árbol de trabajo..."
-git stash save --keep-index
-git stash drop
-
-# Cambiar a la rama main
-echo "Cambiando a la rama main..."
-git checkout main
-
-# Hacer pull de los últimos cambios en la rama main
-echo "Haciendo pull de los últimos cambios en main..."
-git pull --rebase origin main
-
-# Agregar los archivos al repositorio
-echo "Agregando los archivos al repositorio..."
-git add inicio.html pagina1.html pagina2.html pagina3.html
-
-# Realizar el commit de los cambios
-echo "Realizando el commit de los cambios..."
-git commit -a -m "Desplegar sitio web en main"
-
-# Subir los cambios a GitHub
-echo "Subiendo los cambios a GitHub..."
-git push -u origin main
-
-# Finalización correcta del script
-echo "Script completado correctamente."
-exit 0
+Running as SYSTEM
+Ejecutando. en el espacio de trabajo /home/rzf/.jenkins/jobs/construirydesplegar/workspace
+[WS-CLEANUP] Deleting project workspace...
+[WS-CLEANUP] Deferred wipeout is used...
+[WS-CLEANUP] Done
+The recommended git tool is: NONE
+using credential 9d658c61-9fb4-4957-a797-8936eb97aaed
+Cloning the remote Git repository
+Cloning repository https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
+ > git init /home/rzf/.jenkins/jobs/construirydesplegar/workspace # timeout=10
+Fetching upstream changes from https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.45.2'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse origin/master^{commit} # timeout=10
+ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
+Finished: FAILURE
