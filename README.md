@@ -11,15 +11,19 @@ git clone https://RodrigoZapanaFlores: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@g
 cd TRabajoEntornos1
 
 # Cambiar a la rama RodZap
+echo "Cambiando a la rama RodZap..."
 git checkout RodZap
 
 # Hacer pull de los últimos cambios en la rama RodZap
+echo "Haciendo pull de los últimos cambios en RodZap..."
 git pull origin RodZap
 
 # Listar los archivos en el directorio
+echo "Archivos en el directorio TRabajoEntornos1:"
 ls
 
 # Asignar permisos de ejecución a todos los scripts necesarios
+echo "Asignando permisos de ejecución a los scripts..."
 chmod +x build.sh inicio.sh pagina1.sh pagina2.sh pagina3.sh cabecera.sh navegacion.sh pie.sh
 
 # Ejecutar el script build.sh
@@ -50,25 +54,31 @@ else
 fi
 
 # Configurar el usuario de Git
+echo "Configurando el usuario de Git..."
 git config --global user.email "Rodrigozapanaflores@gmail.com"
 git config --global user.name "RodrigoZapanaFlores"
 
 # Cambiar a la rama main
+echo "Cambiando a la rama main..."
 git stash
 git checkout main
 
 # Hacer pull de los últimos cambios en la rama main
+echo "Haciendo pull de los últimos cambios en main..."
 git pull origin main
 
 # Agregar los archivos al repositorio
+echo "Agregando los archivos al repositorio..."
 git add inicio.html pagina1.html pagina2.html pagina3.html
 
 # Realizar el commit de los cambios
+echo "Realizando el commit de los cambios..."
 git commit -a -m "Desplegar sitio web en main"
 
 # Subir los cambios a GitHub
+echo "Subiendo los cambios a GitHub..."
 git push -u https://RodrigoZapanaFlores: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@github.com/RodrigoZapanaFlores/TRabajoEntornos1.git main
 
 # Finalización correcta del script
+echo "Script completado correctamente."
 exit 0
-
