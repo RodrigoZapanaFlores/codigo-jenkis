@@ -1,22 +1,10 @@
 #!/bin/bash
 
 # Verificar la ubicación actual
+echo "Ubicación actual:"
 pwd
 
-# Limpiar el caché de credenciales de Git
-echo "Limpiando el caché de credenciales de Git..."
-git credential-cache exit
-
-# Configurar las credenciales para Git
-echo "Configurando credenciales para Git..."
-cat <<EOF | git credential approve
-protocol=https
-host=github.com
-username=RodrigoZapanaFlores
-password=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
-EOF
-
-# Clonar el repositorio
+# Clonar el repositorio (las credenciales ya están configuradas en Jenkins)
 echo "Clonando el repositorio..."
 git clone https://github.com/RodrigoZapanaFlores/TRabajoEntornos1.git
 
@@ -66,16 +54,6 @@ else
     exit 1
 fi
 
-# Configurar el usuario de Git
-echo "Configurando el usuario de Git..."
-git config --global user.email "Rodrigozapanaflores@gmail.com"
-git config --global user.name "RodrigoZapanaFlores"
-
-# Limpiar el árbol de trabajo
-echo "Limpiando el árbol de trabajo..."
-git stash save --keep-index
-git stash drop
-
 # Cambiar a la rama main
 echo "Cambiando a la rama main..."
 git checkout main
@@ -94,7 +72,7 @@ git commit -a -m "Desplegar sitio web en main"
 
 # Subir los cambios a GitHub
 echo "Subiendo los cambios a GitHub..."
-git push -u https://RodrigoZapanaFlores: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@github.com/RodrigoZapanaFlores/TRabajoEntornos1.git main
+git push origin main
 
 # Finalización correcta del script
 echo "Script completado correctamente."
